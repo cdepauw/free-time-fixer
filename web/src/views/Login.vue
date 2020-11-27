@@ -12,7 +12,7 @@
       <div class="check-keep-logged-in">
         <b-checkbox>Keep me logged in</b-checkbox>
       </div>
-      <b-button tag="router-link" to="/home" type="is-link">
+      <b-button tag="router-link" to="/" type="is-link">
         Log in
       </b-button>
     </div>

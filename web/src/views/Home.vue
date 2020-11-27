@@ -1,13 +1,19 @@
 <template>
   <div class="main-container">
-    <b-tabs type="is-boxed" expanded>
+    <b-tabs type="is-boxed" expanded destroy-on-hide>
       <b-tab-item icon="flash" id="tabs">
         <ActivityChooser v-if="State == 1" />
         <ActivitySetup v-else-if="State == 0" />
         <OngoingActivity v-else-if="State == 2" />
       </b-tab-item>
-      <b-tab-item icon="format-list-bulleted"></b-tab-item>
-      <b-tab-item icon="logout-variant"></b-tab-item>
+
+      <b-tab-item icon="format-list-bulleted">
+        <ActivityList/>
+      </b-tab-item>
+
+      <b-tab-item icon="account">
+        <Profile/>
+      </b-tab-item>
     </b-tabs>
   </div>
 </template>
@@ -16,6 +22,8 @@
 import ActivityChooser from "../components/ActivityChooser";
 import ActivitySetup from "../components/ActivitySetup";
 import OngoingActivity from "../components/OngoingActivity";
+import Profile from "../components/Profile";
+import ActivityList from "../components/ActivityList";
 
 export default {
   name: "Home",
@@ -23,6 +31,8 @@ export default {
     ActivityChooser,
     ActivitySetup,
     OngoingActivity,
+    Profile,
+    ActivityList,
   },
   data() {
     return {
@@ -41,16 +51,17 @@ export default {
 }
 
 .b-tabs.is-fullwidth {
-  height: 100%;
+  height: 90%;
+  box-sizing: border-box;
 }
 
 .b-tabs .tab-content {
   height: 100%;
+  box-sizing: border-box;
 }
 
 .b-tabs .tab-content .tab-item {
   height: 100%;
+  box-sizing: border-box;
 }
-
-
 </style>

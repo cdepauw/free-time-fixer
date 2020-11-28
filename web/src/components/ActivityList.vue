@@ -1,15 +1,20 @@
 <template>
   <div class="list-container">
-    <ActivityListItem 
-        v-for="item in activities"
-        :name="item"
-        :key="item"
+    <ActivityListItem
+      class="list-item"
+      v-for="item in activities"
+      :name="item.name"
+      :id="item.id"
+      :key="item.id"
+      :open="openId == item.id"
+      @open="openId = item.id"
     />
   </div>
 </template>
 
 <script>
 import ActivityListItem from "./ActivityListItem";
+import { mapState } from "vuex";
 
 export default {
   name: "ActivityList",
@@ -18,8 +23,13 @@ export default {
   },
   data() {
     return {
-        activities: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+      openId: -1,
     };
+  },
+  computed: {
+    ...mapState({
+      activities: "activities",
+    }),
   },
 };
 </script>
@@ -32,7 +42,7 @@ export default {
   overflow: auto;
 }
 
-ActivityListItem {
-  padding: 0.1em;
+.list-item {
+  padding: 0.3em;
 }
 </style>

@@ -5,20 +5,30 @@
       <h2 class="home-subtitle">Choose one:</h2>
     </div>
     <div class="picker-container">
-      <div class="picker-card">1</div>
-      <div class="picker-card">2</div>
-      <div class="picker-card">3</div>
-      <div class="picker-card">4</div>
+      <ActivityChooserCard
+        v-for="item in getActivitySuggestions"
+        :name="item.name"
+        :id="item.id"
+        :key="item.id"
+      />
     </div>
     <div>buttons</div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import ActivityChooserCard from "./ActivityChooserCard";
+
 export default {
   name: "ActivityChooser",
-  data() {
-    return {};
+  components: {
+    ActivityChooserCard,
+  },
+  computed: {
+    ...mapGetters({
+      getActivitySuggestions: "getActivitySuggestions",
+    }),
   },
 };
 </script>
@@ -59,14 +69,5 @@ export default {
   padding: 2em 0 1em 0;
   height: 60%;
   width: 100%;
-}
-
-.picker-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: lightsteelblue;
-  border: 1px solid black;
-  border-radius: 5%;
 }
 </style>

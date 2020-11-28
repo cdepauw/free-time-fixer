@@ -4,7 +4,6 @@
       aria-id="header-id"
       class="panel"
       animation="slide"
-      v-model="isOpen"
       @open="emitOpenEvent"
     >
       <div
@@ -36,11 +35,6 @@
 <script>
 export default {
   name: "ActivityListItem",
-  data() {
-    return {
-      isOpen: false,
-    };
-  },
   props: {
     name: {
       type: String,

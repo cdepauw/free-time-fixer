@@ -8,11 +8,11 @@
       </b-tab-item>
 
       <b-tab-item icon="format-list-bulleted">
-        <ActivityList/>
+        <ActivityList />
       </b-tab-item>
 
       <b-tab-item icon="account">
-        <Profile/>
+        <Profile />
       </b-tab-item>
     </b-tabs>
   </div>
@@ -57,6 +57,7 @@ export default {
 
 .b-tabs .tab-content {
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
 }
 

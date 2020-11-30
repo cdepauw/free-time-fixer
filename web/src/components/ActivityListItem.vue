@@ -4,6 +4,7 @@
       aria-id="header-id"
       class="panel"
       animation="slide"
+      :open="open"
       @open="emitOpenEvent"
     >
       <div
@@ -14,10 +15,8 @@
       >
         <div class="header-container">
           <div class="header-content">
-            <b-icon class="header-icon" size="is-small" icon="radioactive" />
-            <p class="header-title">
-              {{ name }}
-            </p>
+            <b-icon class="header-icon" size="is-small" :icon="icon" />
+            <p class="header-title">{{ name }}</p>
           </div>
           <b-button
             size="is-medium"
@@ -35,12 +34,29 @@
 <script>
 export default {
   name: "ActivityListItem",
+  data() {
+    return {
+      isOpen: -1,
+    };
+  },
   props: {
+    open: {
+      type: Boolean,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
     },
     id: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+    },
+    icon: {
       type: String,
       required: true,
     },
@@ -74,6 +90,8 @@ export default {
 
 .header-title {
   font-weight: bold;
+  border-left: 1px solid black;
+  padding-left: 0.75em;
 }
 
 .panel-block {

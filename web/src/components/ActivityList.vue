@@ -2,12 +2,14 @@
   <div class="list-container">
     <ActivityListItem
       class="list-item"
-      v-for="item in activities"
+      v-for="(item, index) of activities"
       :name="item.name"
       :id="item.id"
-      :key="item.id"
-      :open="openId == item.id"
-      @open="openId = item.id"
+      :category="item.category"
+      :icon="item.icon"
+      :key="index"
+      :open="isOpen == index"
+      @open="isOpen = index"
     />
   </div>
 </template>
@@ -23,7 +25,7 @@ export default {
   },
   data() {
     return {
-      openId: -1,
+      isOpen: -1,
     };
   },
   computed: {

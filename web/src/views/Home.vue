@@ -1,6 +1,6 @@
 <template>
-  <div class="main-container">
-    <b-tabs type="is-boxed" expanded destroy-on-hide>
+  <div class="main-container" v-touch:swipe="handleSwipe">
+    <b-tabs v-model="tabIndex" type="is-boxed" expanded destroy-on-hide>
       <b-tab-item icon="flash" id="tabs">
         <ActivityChooser v-if="State == 1" />
         <ActivitySetup v-else-if="State == 0" />
@@ -37,7 +37,17 @@ export default {
   data() {
     return {
       State: 1, // 0 = set-up, 1 = pick activity, 2 = ongoing activity
+      tabIndex: 0,
     };
+  },
+  methods: {
+    handleSwipe(direction) {
+      if (direction === "left" && this.tabIndex < 2) {
+        this.tabIndex += 1;
+      } else if (direction === "right" && this.tabIndex > 0) {
+        this.tabIndex -= 1;
+      }
+    },
   },
 };
 </script>

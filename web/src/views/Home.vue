@@ -2,9 +2,7 @@
   <div class="main-container" v-touch:swipe="handleSwipe">
     <b-tabs v-model="tabIndex" type="is-boxed" expanded destroy-on-hide>
       <b-tab-item icon="flash" id="tabs">
-        <ActivityChooser v-if="State == 1" />
-        <ActivitySetup v-else-if="State == 0" />
-        <OngoingActivity v-else-if="State == 2" :id="'1'" />
+        <ActivityPanel />
       </b-tab-item>
 
       <b-tab-item icon="format-list-bulleted">
@@ -19,24 +17,19 @@
 </template>
 
 <script>
-import ActivityChooser from "../components/ActivityChooser";
-import ActivitySetup from "../components/ActivitySetup";
-import OngoingActivity from "../components/OngoingActivity";
+import ActivityPanel from "../components/ActivityPanel";
 import Profile from "../components/Profile";
 import ActivityList from "../components/ActivityList";
 
 export default {
   name: "Home",
   components: {
-    ActivityChooser,
-    ActivitySetup,
-    OngoingActivity,
+    ActivityPanel,
     Profile,
     ActivityList,
   },
   data() {
     return {
-      State: 1, // 0 = set-up, 1 = pick activity, 2 = ongoing activity
       tabIndex: 0,
     };
   },

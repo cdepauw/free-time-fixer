@@ -10,6 +10,9 @@
     <div>
       <p class="activity-title">{{ getActivity(id).name }}</p>
     </div>
+    <div>
+      <b-button @click="completeActivity(id)">Complete activity</b-button>
+    </div>
   </div>
 </template>
 
@@ -33,6 +36,11 @@ export default {
     ...mapGetters({
       getActivity: "getActivity",
     }),
+  },
+  methods: {
+    completeActivity: function (id) {
+      this.$emit("activityCompleted", { id: id });
+    },
   },
 };
 </script>

@@ -6,7 +6,7 @@
     </div>
     <div class="picker-container">
       <ActivityChooserCard
-        v-for="item in getActivitySuggestions"
+        v-for="item in activities"
         :name="item.name"
         :category="item.category"
         :icon="item.icon"
@@ -15,7 +15,15 @@
         @click.native="startActivity(item.id)"
       />
     </div>
-    <div>buttons</div>
+    <div class="refresh-button-container">
+      <b-button
+        @click="refreshActivitySuggestions"
+        icon-left="rotate-left"
+        size="is-medium"
+        type="is-warning is-light"
+        >Refresh</b-button
+      >
+    </div>
   </div>
 </template>
 
@@ -33,10 +41,21 @@ export default {
       getActivitySuggestions: "getActivitySuggestions",
     }),
   },
+  data() {
+    return {
+      activities: [],
+    };
+  },
   methods: {
     startActivity: function (id) {
-      alert("Starting activity " + id);
+      this.$emit("activityChosen", { id: id });
     },
+    refreshActivitySuggestions: function () {
+      this.activities = this.getActivitySuggestions();
+    },
+  },
+  created: function () {
+    this.activities = this.getActivitySuggestions();
   },
 };
 </script>
@@ -77,5 +96,12 @@ export default {
   padding: 2em 0 1em 0;
   height: 60%;
   width: 100%;
+}
+
+.refresh-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 1em;
 }
 </style>

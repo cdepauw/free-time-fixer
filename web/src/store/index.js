@@ -52,7 +52,7 @@ export default new Vuex.Store({
   },
   getters: {
     // Select 4 at random. Ensure these are 4 unique choices.
-    getActivitySuggestions: (state) => {
+    getActivitySuggestions: (state) => () => {
       var res = [];
       for (var i = 0; i < 4; i++) {
         var choice = Math.floor(Math.random() * state.activities.length);
@@ -83,6 +83,9 @@ export default new Vuex.Store({
 
     getActivity: (state) => (id) => {
       return state.activities.find((activity) => activity.id == id);
+    },
+    getNumberOfActivities: (state) => {
+      return state.activities.length;
     },
   },
   mutations: {},

@@ -80,6 +80,10 @@ export default new Vuex.Store({
 
       return res;
     },
+
+    getActivity: (state) => (id) => {
+      return state.activities.find((activity) => activity.id == id);
+    },
   },
   mutations: {},
   actions: {},

@@ -1,5 +1,8 @@
 <template>
   <div class="list-container">
+    <div>
+      <h1 class="list-title">Manage your activities</h1>
+    </div>
     <ActivityListItem
       class="list-item"
       v-for="(item, index) of activities"
@@ -42,6 +45,14 @@ export default {
   flex-direction: column;
   height: 100%;
   overflow: auto;
+}
+
+.list-title {
+  font-size: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-weight: bold;
+  text-align: left;
 }
 
 .list-item {

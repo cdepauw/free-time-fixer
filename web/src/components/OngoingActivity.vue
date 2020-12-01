@@ -1,23 +1,44 @@
 <template>
-  <div class="home-container">
+  <div class="activity-container">
     <div>
-      <h1 class="home-title">Create one more activities to get started!</h1>
+      <b-icon
+        class="activity-icon"
+        size="is-medium"
+        :icon="getActivity(id).icon"
+      />
     </div>
-    <div class="ongoing-activity">You are currently doing <strong>something awesome</strong></div>
+    <div>
+      <p class="activity-title">{{ getActivity(id).name }}</p>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "OngoingActivity",
   data() {
-    return {};
+    return {
+      activeActivityId: 1,
+    };
+  },
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+  },
+  computed: {
+    ...mapGetters({
+      getActivity: "getActivity",
+    }),
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.home-container {
+.activity-container {
   display: flex;
   align-items: left;
   justify-content: flex-start;
@@ -25,24 +46,15 @@ export default {
   width: 100%;
   height: 100%;
   background-color: #e1e6fc;
-  padding-left: 3em;
-  padding-right: 3em;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
-.home-title {
+.activity-title {
   font-size: 2em;
   padding-top: 1em;
   padding-bottom: 1em;
   font-weight: bold;
   text-align: left;
-}
-
-.activity-creation-form {
-    background-color: white;
-    height: 60%;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 2%;
 }
 </style>

@@ -8,8 +8,11 @@
       <ActivityChooserCard
         v-for="item in getActivitySuggestions"
         :name="item.name"
+        :category="item.category"
+        :icon="item.icon"
         :id="item.id"
         :key="item.id"
+        @click.native="startActivity(item.id)"
       />
     </div>
     <div>buttons</div>
@@ -30,6 +33,11 @@ export default {
       getActivitySuggestions: "getActivitySuggestions",
     }),
   },
+  methods: {
+    startActivity: function (id) {
+      alert("Starting activity " + id);
+    },
+  },
 };
 </script>
 
@@ -42,8 +50,8 @@ export default {
   width: 100%;
   height: 100%;
   background-color: #e1e6fc;
-  padding-left: 3em;
-  padding-right: 3em;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 .home-title {

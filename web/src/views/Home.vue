@@ -4,7 +4,7 @@
       <b-tab-item icon="flash" id="tabs">
         <ActivityChooser v-if="State == 1" />
         <ActivitySetup v-else-if="State == 0" />
-        <OngoingActivity v-else-if="State == 2" />
+        <OngoingActivity v-else-if="State == 2" :id="'1'" />
       </b-tab-item>
 
       <b-tab-item icon="format-list-bulleted">

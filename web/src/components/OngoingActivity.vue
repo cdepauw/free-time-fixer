@@ -56,6 +56,7 @@ export default {
   background-color: #e1e6fc;
   padding-left: 2em;
   padding-right: 2em;
+  text-align: center;
 }
 
 .activity-title {
@@ -63,6 +64,6 @@ export default {
   padding-top: 1em;
   padding-bottom: 1em;
   font-weight: bold;
-  text-align: left;
+  text-align: center;
 }
 </style>

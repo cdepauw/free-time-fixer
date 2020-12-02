@@ -7,3 +7,5 @@
 - Client-side storage (cookie/session)
 - Log-in
 - Notifications for mobile (?)
+- Multilanguage
+- Navigation and history in the tab component (?)

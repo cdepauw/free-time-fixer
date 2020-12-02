@@ -21,8 +21,7 @@
           <b-button
             size="is-medium"
             icon-left="pencil"
-            tag="router-link"
-            to="/edit"
+            @click="$emit('click-edit', { id: id })"
           />
         </div>
       </div>

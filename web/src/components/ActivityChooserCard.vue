@@ -36,6 +36,7 @@ export default {
 <style lang="scss" scoped>
 .picker-card-container {
   display: flex;
+  text-align: center;
   flex-direction: column;
   justify-content: space-around;
   align-content: space-around;

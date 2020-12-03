@@ -16,6 +16,7 @@
           :open="isOpen == index"
           @open="isOpen = index"
           @click-edit="handleEdit"
+          @click-delete="handleDelete"
         />
       </div>
       <div class="create-new-button-container">
@@ -40,7 +41,7 @@
 <script>
 import ActivityListItem from "./ActivityListItem";
 import ActivityForm from "./ActivityForm";
-import { mapState } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
   name: "ActivityList",
@@ -52,26 +53,44 @@ export default {
     return {
       isOpen: -1,
       createOrEdit: false,
-      editId: -1,
+      editId: "",
     };
   },
   computed: {
     ...mapState({
       activities: "activities",
     }),
+    ...mapGetters({
+      getActivity: "getActivity",
+    }),
   },
   methods: {
+    ...mapActions(["deleteActivity"]),
     handleEdit: function (payload) {
       this.createOrEdit = true;
       this.editId = payload.id;
     },
+    handleDelete: function (payload) {
+      var activity = this.getActivity(payload.id);
+      this.$buefy.dialog.confirm({
+        title: "Deleting activity",
+        message:
+          "Are you sure you want to delete activity <b>" +
+          activity.name +
+          "</b>? This action cannot be undone.",
+        confirmText: "Delete",
+        type: "is-danger",
+        hasIcon: true,
+        onConfirm: () => this.deleteActivity(payload.id),
+      });
+    },
     handleCreate: function () {
       this.createOrEdit = true;
-      this.editId = undefined;
+      this.editId = "";
     },
     handleCancelCreateOrEdit: function () {
       this.createOrEdit = false;
-      this.editId = undefined;
+      this.editId = "";
     },
   },
 };

@@ -18,11 +18,20 @@
             <b-icon class="header-icon" size="is-small" :icon="icon" />
             <p class="header-title">{{ name }}</p>
           </div>
-          <b-button
-            size="is-medium"
-            icon-left="pencil"
-            @click="$emit('click-edit', { id: id })"
-          />
+          <div class="header-button-container">
+            <b-button
+              size="is-medium"
+              icon-left="pencil"
+              @click.stop="$emit('click-edit', { id: id })"
+            />
+            <b-button
+              size="is-medium"
+              icon-left="delete"
+              type="is-danger"
+              outlined
+              @click.stop="$emit('click-delete', { id: id })"
+            />
+          </div>
         </div>
       </div>
       <div class="panel-block">Text</div>

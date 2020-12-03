@@ -88,7 +88,20 @@ export default new Vuex.Store({
       return state.activities.length;
     },
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    deleteActivity(state, id) {
+      for (var i = 0; i < state.activities.length; i++) {
+        if (state.activities[i].id == id) {
+          state.activities.splice(i, 1);
+          break;
+        }
+      }
+    },
+  },
+  actions: {
+    deleteActivity({ commit }, id) {
+      commit("deleteActivity", id);
+    },
+  },
   modules: {},
 });

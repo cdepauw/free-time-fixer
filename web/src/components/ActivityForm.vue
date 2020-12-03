@@ -24,11 +24,13 @@
         icon-left="close"
         size="is-medium"
         @click="$emit('click-cancel', {})"
-        >Cancel</b-button
       >
-      <b-button icon-left="check" size="is-medium" type="is-success"
-        >Save</b-button
-      >
+        Cancel
+      </b-button>
+
+      <b-button icon-left="check" size="is-medium" type="is-success">
+        Save
+      </b-button>
     </div>
   </div>
 </template>
@@ -61,8 +63,14 @@ export default {
     }),
   },
   beforeMount() {
-    if (this.id !== undefined) {
+    if (this.id != "") {
       this.activity = this.getActivity(this.id);
+    } else {
+      this.activity = {
+        name: "Name",
+        category: "Fun",
+        icon: "broom",
+      };
     }
   },
 };

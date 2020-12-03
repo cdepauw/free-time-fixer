@@ -1,5 +1,6 @@
 # TODO's:
 
+- More information in activities
 - Javascript functionality
 - Neat design
 - Mock API in javascript

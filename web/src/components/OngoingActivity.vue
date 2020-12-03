@@ -1,16 +1,22 @@
 <template>
   <div class="activity-container">
-    <div>
-      <b-icon
-        class="activity-icon"
-        size="is-medium"
-        :icon="getActivity(id).icon"
-      />
+    <div class="activity-information-container">
+      <div>
+        <h1 class="activity-title">{{ getActivity(id).name }}</h1>
+      </div>
+      <div class="activity-information">
+        <p>
+          <strong>Category: </strong>{{ getActivity(id).category }}
+          <b-icon
+            class="activity-icon"
+            size="is-medium"
+            :icon="getActivity(id).icon"
+          />
+        </p>
+      </div>
     </div>
-    <div>
-      <p class="activity-title">{{ getActivity(id).name }}</p>
-    </div>
-    <div>
+
+    <div class="activity-button-container">
       <b-button
         @click="completeActivity(id)"
         icon-left="check"
@@ -54,15 +60,13 @@ export default {
 <style lang="scss" scoped>
 .activity-container {
   display: flex;
-  align-items: left;
-  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: space-between;
   flex-direction: column;
   width: 100%;
   height: 100%;
   background-color: #e1e6fc;
-  padding-left: 2em;
-  padding-right: 2em;
-  text-align: center;
+  padding: 0 2em;
 }
 
 .activity-title {
@@ -71,5 +75,12 @@ export default {
   padding-bottom: 1em;
   font-weight: bold;
   text-align: center;
+}
+
+.activity-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 </style>

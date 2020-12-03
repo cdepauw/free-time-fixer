@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div class="main-form-container">
     <div class="form-container">
       <div>
         <h1 class="form-title">Your activity</h1>
@@ -28,7 +28,12 @@
         Cancel
       </b-button>
 
-      <b-button icon-left="check" size="is-medium" type="is-success">
+      <b-button
+        icon-left="check"
+        size="is-medium"
+        type="is-success"
+        @click="handleSave"
+      >
         Save
       </b-button>
     </div>
@@ -70,18 +75,35 @@ export default {
         name: "Name",
         category: "Fun",
         icon: "broom",
+        id: "",
       };
     }
+  },
+  methods: {
+    handleSave: function () {
+      for (var i = 0; i < this.types.length; i++) {
+        if (this.activity.category == this.types[i].category) {
+          this.activity.icon = this.types[i].icon;
+          break;
+        }
+      }
+
+      this.$emit("click-save", { activity: this.activity });
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.main-container {
+.main-form-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 80%;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+  padding: 0 2em 0 2em;
+  text-align: left;
 }
 
 .form-title {

@@ -34,6 +34,7 @@
       v-else
       :id="editId"
       @click-cancel="handleCancelCreateOrEdit"
+      @click-save="handleSaveActivity"
     />
   </div>
 </template>
@@ -65,7 +66,7 @@ export default {
     }),
   },
   methods: {
-    ...mapActions(["deleteActivity"]),
+    ...mapActions(["deleteActivity", "updateActivity", "addNewActivity"]),
     handleEdit: function (payload) {
       this.createOrEdit = true;
       this.editId = payload.id;
@@ -92,6 +93,16 @@ export default {
       this.createOrEdit = false;
       this.editId = "";
     },
+    handleSaveActivity: function (payload) {
+      if (payload.activity.id == "") {
+        this.addNewActivity(payload.activity);
+      } else {
+        this.updateActivity(payload.activity);
+      }
+
+      this.createOrEdit = false;
+      this.editId = "";
+    },
   },
 };
 </script>
@@ -99,12 +110,17 @@ export default {
 <style lang="scss" scoped>
 .main-container {
   height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main-list-container {
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
   overflow: auto;
 }
 

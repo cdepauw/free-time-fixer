@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { v4 as uuidv4 } from "uuid";
 
 Vue.use(Vuex);
 
@@ -97,10 +98,31 @@ export default new Vuex.Store({
         }
       }
     },
+    updateActivity(state, activity) {
+      for (var i = 0; i < state.activities.length; i++) {
+        if (state.activities[i].id == activity.id) {
+          state.activities[i] = activity;
+          break;
+        }
+      }
+    },
+    addNewActivity(state, activity) {
+      if (activity.id == "") {
+        activity.id = uuidv4();
+      }
+
+      state.activities.push(activity);
+    },
   },
   actions: {
     deleteActivity({ commit }, id) {
       commit("deleteActivity", id);
+    },
+    updateActivity({ commit }, activity) {
+      commit("updateActivity", activity);
+    },
+    addNewActivity({ commit }, activity) {
+      commit("addNewActivity", activity);
     },
   },
   modules: {},

@@ -11,7 +11,13 @@
       <p class="activity-title">{{ getActivity(id).name }}</p>
     </div>
     <div>
-      <b-button @click="completeActivity(id)">Complete activity</b-button>
+      <b-button
+        @click="completeActivity(id)"
+        icon-left="check"
+        size="is-medium"
+        type="is-success"
+        >Complete activity</b-button
+      >
     </div>
   </div>
 </template>

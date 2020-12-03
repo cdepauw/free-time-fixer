@@ -8,7 +8,7 @@ import Vue2TouchEvents from "vue2-touch-events";
 
 Vue.use(Buefy);
 Vue.use(Vue2TouchEvents, {
-  swipeTolerance: 10,
+  swipeTolerance: 30,
 });
 
 Vue.config.productionTip = false;

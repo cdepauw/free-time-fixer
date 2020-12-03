@@ -1,6 +1,6 @@
 <template>
   <div class="main-container" v-touch:swipe="handleSwipe">
-    <b-tabs v-model="tabIndex" type="is-boxed" expanded>
+    <b-tabs v-model="tabIndex" type="is-boxed" expanded :animated="false">
       <b-tab-item icon="flash" id="tabs">
         <ActivityPanel />
       </b-tab-item>

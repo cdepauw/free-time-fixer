@@ -50,7 +50,7 @@ export default {
     }),
   },
   methods: {
-    completeActivity: function (id) {
+    completeActivity: function(id) {
       this.$emit("activityCompleted", { id: id });
     },
   },

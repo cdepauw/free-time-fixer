@@ -33,11 +33,11 @@ export default {
     };
   },
   methods: {
-    handleActivityChosen: function (payload) {
+    handleActivityChosen: function(payload) {
       this.ongoingActivityId = payload.id;
       this.activityOngoing = true;
     },
-    handleActivityCompleted: function () {
+    handleActivityCompleted: function() {
       this.ongoingActivityId = -1;
       this.activityOngoing = false;
     },

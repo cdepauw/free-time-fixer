@@ -47,14 +47,14 @@ export default {
     };
   },
   methods: {
-    startActivity: function (id) {
+    startActivity: function(id) {
       this.$emit("activityChosen", { id: id });
     },
-    refreshActivitySuggestions: function () {
+    refreshActivitySuggestions: function() {
       this.activities = this.getActivitySuggestions();
     },
   },
-  created: function () {
+  created: function() {
     this.activities = this.getActivitySuggestions();
   },
 };

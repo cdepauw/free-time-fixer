@@ -67,11 +67,11 @@ export default {
   },
   methods: {
     ...mapActions(["deleteActivity", "updateActivity", "addNewActivity"]),
-    handleEdit: function (payload) {
+    handleEdit: function(payload) {
       this.createOrEdit = true;
       this.editId = payload.id;
     },
-    handleDelete: function (payload) {
+    handleDelete: function(payload) {
       var activity = this.getActivity(payload.id);
       this.$buefy.dialog.confirm({
         title: "Deleting activity",
@@ -85,15 +85,15 @@ export default {
         onConfirm: () => this.deleteActivity(payload.id),
       });
     },
-    handleCreate: function () {
+    handleCreate: function() {
       this.createOrEdit = true;
       this.editId = "";
     },
-    handleCancelCreateOrEdit: function () {
+    handleCancelCreateOrEdit: function() {
       this.createOrEdit = false;
       this.editId = "";
     },
-    handleSaveActivity: function (payload) {
+    handleSaveActivity: function(payload) {
       if (payload.activity.id == "") {
         this.addNewActivity(payload.activity);
       } else {

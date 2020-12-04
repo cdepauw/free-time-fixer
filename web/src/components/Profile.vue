@@ -1,6 +1,12 @@
 <template>
   <div class="home-container">
-    <b-button size="is-large" icon-left="logout-variant" tag="router-link" to="/login">Log out</b-button>
+    <b-button
+      size="is-large"
+      icon-left="logout-variant"
+      tag="router-link"
+      to="/login"
+      >Log out</b-button
+    >
   </div>
 </template>
 
@@ -13,6 +19,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

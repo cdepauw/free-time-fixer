@@ -38,11 +38,11 @@ export default {
 }
 
 .activity-creation-form {
-    background-color: white;
-    height: 60%;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 2%;
+  background-color: white;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 2%;
 }
 </style>

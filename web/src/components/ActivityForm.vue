@@ -80,7 +80,7 @@ export default {
     }
   },
   methods: {
-    handleSave: function () {
+    handleSave: function() {
       for (var i = 0; i < this.types.length; i++) {
         if (this.activity.category == this.types[i].category) {
           this.activity.icon = this.types[i].icon;
